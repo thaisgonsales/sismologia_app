@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,7 +49,8 @@ public class SismosAdapter extends RecyclerView.Adapter<SismosAdapter.ViewHolder
         holder.magnitudTxt.setText("Magnitud: " + currentSismo.getMagnitud());
         holder.ubicacionTxt.setText("Ubicación: " + currentSismo.getRefGeografica());
 
-        holder.toggleInfoVisibility();
+
+        holder.hideInfo();
     }
 
     @Override
@@ -61,6 +63,7 @@ public class SismosAdapter extends RecyclerView.Adapter<SismosAdapter.ViewHolder
         private TextView profundidadTxt;
         private TextView magnitudTxt;
         private TextView ubicacionTxt;
+        private LinearLayout infoLayout; // Agrega un LinearLayout para envolver las secciones de información
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,13 +71,16 @@ public class SismosAdapter extends RecyclerView.Adapter<SismosAdapter.ViewHolder
             profundidadTxt = itemView.findViewById(R.id.profundidadTxt);
             magnitudTxt = itemView.findViewById(R.id.magnitudTxt);
             ubicacionTxt = itemView.findViewById(R.id.ubicacionTxt);
+            infoLayout = itemView.findViewById(R.id.infoLayout); // Asigna el LinearLayout
         }
 
         public void toggleInfoVisibility() {
-            int visibility = profundidadTxt.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE;
-            profundidadTxt.setVisibility(visibility);
-            magnitudTxt.setVisibility(visibility);
-            ubicacionTxt.setVisibility(visibility);
+            int visibility = infoLayout.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE;
+            infoLayout.setVisibility(visibility);
+        }
+
+        public void hideInfo() {
+            infoLayout.setVisibility(View.GONE);
         }
     }
 }
