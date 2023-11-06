@@ -63,7 +63,7 @@ public class SismosAdapter extends RecyclerView.Adapter<SismosAdapter.ViewHolder
         private TextView profundidadTxt;
         private TextView magnitudTxt;
         private TextView ubicacionTxt;
-        private LinearLayout infoLayout; // Agrega un LinearLayout para envolver las secciones de información
+        private LinearLayout infoLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,7 +71,7 @@ public class SismosAdapter extends RecyclerView.Adapter<SismosAdapter.ViewHolder
             profundidadTxt = itemView.findViewById(R.id.profundidadTxt);
             magnitudTxt = itemView.findViewById(R.id.magnitudTxt);
             ubicacionTxt = itemView.findViewById(R.id.ubicacionTxt);
-            infoLayout = itemView.findViewById(R.id.infoLayout); // Asigna el LinearLayout
+            infoLayout = itemView.findViewById(R.id.infoLayout);
         }
 
         public void toggleInfoVisibility() {
